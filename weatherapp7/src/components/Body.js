@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useState } from "react";
-
-function Body({ forecast }) {
+import { useCity } from "../context/CityContext";
+function Body() {
+  const { forecast } = useCity();
   const weekday = [
     "Sunday",
     "Monday",
@@ -17,8 +16,8 @@ function Body({ forecast }) {
         <div
           className={
             index === 0
-              ? "bg-light text-dark border border-danger border-3"
-              : "" + " card text-secondary"
+              ? "bg-light text-dark border border-danger border-3  card text-secondary"
+              : " card text-secondary"
           }
           style={{ width: "18rem" }}
           key={index}
@@ -29,7 +28,7 @@ function Body({ forecast }) {
           <img
             className="card-img-top"
             src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-            alt="Card image cap"
+            alt="weather icon"
           />
           <div className="card-body">
             <p className="card-text">

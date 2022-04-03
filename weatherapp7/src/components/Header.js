@@ -1,12 +1,11 @@
-import React from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import { useState } from "react";
 import Cities from "./Cities";
+import { useCity } from "../context/CityContext";
 
-function Header({ city, setCity }) {
+function Header() {
+  const { city, setCity } = useCity();
   const handleCity = (e) => {
     setCity(e);
-    console.log(e);
   };
 
   return (
@@ -15,11 +14,8 @@ function Header({ city, setCity }) {
         id="dropdown-basic-button"
         title={city || "Select City"}
         align="start"
-        // onClick={handleChange("userRole")}
         onSelect={handleCity}
       >
-        {/* <Dropdown.Item eventKey="Turkey">Turkey</Dropdown.Item> */}
-
         {Object.values(Cities).map((cityTr, index) => (
           <Dropdown.Item
             key={index}
